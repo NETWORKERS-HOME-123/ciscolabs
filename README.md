@@ -1,222 +1,140 @@
-# Cisco Network Simulator
+<div align="center">
 
-A browser-based Cisco network simulator with Konva.js visualization and a Cisco-like CLI parser. No real device emulation - pure logical simulation.
+# 🖧 Cisco Labs
 
-## Features
+### Browser-based Cisco IOS CLI simulator for CCNA / CCNP lab practice
 
-- **Topology Engine**: Drag-and-drop device placement, link connections
-- **Simulation Engine**: Event-driven packet processing (ARP, ICMP)
-- **CLI Parser**: Cisco-like hierarchical CLI with multiple modes
-- **Canvas Renderer**: Konva.js-based visualization with zoom/pan
-- **Web Workers**: Non-blocking simulation in separate thread
+**Free virtual lab environment — practice config, troubleshoot, save scenarios. Runs in any browser.**
+
+[![CCNA](https://img.shields.io/badge/CCNA-200--301-1F4FD8?style=for-the-badge&logo=cisco&logoColor=white)](https://www.networkershome.com/best-ccna-course-in-bangalore/)
+[![CCNP](https://img.shields.io/badge/CCNP%20Enterprise-FF6B35?style=for-the-badge&logo=cisco&logoColor=white)](https://www.networkershome.com/best-ccnp-enterprise-course-in-bangalore/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+[![Built by Networkers Home](https://img.shields.io/badge/Built%20by-Networkers%20Home-000000?style=for-the-badge)](https://www.networkershome.com/)
+
+</div>
+
+---
+
+## 🏛️ Built by Networkers Home
+
+A virtual Cisco lab environment built by **[Networkers Home](https://www.networkershome.com/)** — India's leading Cisco + cybersecurity training institute (Bengaluru, since 2005). Used by students in our [CCNA](https://www.networkershome.com/best-ccna-course-in-bangalore/), [CCNP Enterprise](https://www.networkershome.com/best-ccnp-enterprise-course-in-bangalore/), and [CCIE Enterprise](https://www.networkershome.com/best-ccie-enterprise-course-in-bangalore/) programs to practice between live lab sessions on real Cisco hardware.
+
+> **Want hands-on lab access on real Cisco gear?** Networkers Home runs **24×7 lab access** at the HSR Layout campus. Real Cisco/Palo Alto/Fortinet hardware. [Book a demo class →](https://www.networkershome.com/networkers-home-demo-class/)
+
+**Compare top training institutes:**
+[Top 10 CCNA Bangalore](https://www.networkershome.com/top-10-ccna-training-institutes-bangalore-2026/) · [Top 10 CCNP Enterprise](https://www.networkershome.com/top-10-ccnp-enterprise-training-institutes-bangalore-2026/) · [Top 10 CCIE Security India](https://www.networkershome.com/top-10-ccie-security-training-institutes-india-2026/) · [Top 10 CCIE Enterprise India](https://www.networkershome.com/top-10-ccie-enterprise-training-institutes-india-2026/)
+
+---
+
+## ✨ Features
+
+- **Topology Engine** — drag-and-drop device placement, link connections
+- **Simulation Engine** — event-driven packet processing (ARP, ICMP)
+- **Cisco-style CLI parser** — hierarchical modes (User EXEC → Privileged EXEC → Config → Interface)
+- **Konva.js canvas** — zoom, pan, real-time visualization
+- **Web Workers** — non-blocking simulation in a separate thread
+- **No real device emulation** — pure logical simulation, runs anywhere
+
+## 🎯 Who this is for
+
+- **CCNA candidates** building exam muscle memory for 200-301
+- **CCNP Enterprise candidates** practicing OSPF, BGP, EIGRP, VLAN configs
+- **Networking instructors** — free classroom lab tool
+- **Self-learners** without access to physical Cisco gear
+
+## 📚 Learn the underlying skills
+
+The simulator is a **practice tool**, not a course. To go from "I can type commands" to "I can troubleshoot a production network at 2am," train with experts:
+
+| Goal | Networkers Home program |
+|---|---|
+| Pass CCNA 200-301 | [CCNA course in Bangalore](https://www.networkershome.com/best-ccna-course-in-bangalore/) |
+| Pass CCNP Enterprise | [CCNP Enterprise course](https://www.networkershome.com/best-ccnp-enterprise-course-in-bangalore/) |
+| Pass CCIE Enterprise lab | [CCIE Enterprise course](https://www.networkershome.com/best-ccie-enterprise-course-in-bangalore/) |
+| Career as network engineer | [Network Engineering program](https://www.networkershome.com/best-network-engineering-course-in-bangalore/) |
+| Online study (anywhere in India) | [All NH courses (online + offline)](https://www.networkershome.com/networkershome-all-courses/) |
+
+---
 
 ## Supported Cisco Commands
 
 ### User EXEC Mode (>)
-- `enable` - Enter privileged EXEC mode
-- `help` - Show available commands
+- `enable` — enter privileged EXEC mode
+- `help` — show available commands
 
 ### Privileged EXEC Mode (#)
-- `disable` - Exit to user EXEC mode
-- `configure terminal` - Enter global configuration mode
-- `show version` - Display system version
-- `show running-config` - Display running configuration
-- `show startup-config` - Display startup configuration
-- `show ip interface brief` - Display interface summary
-- `show interfaces [name]` - Display interface details
-- `show ip route` - Display routing table
-- `show arp` - Display ARP table
-- `show mac address-table` - Display MAC address table
-- `ping <ip>` - Ping a destination
-- `write memory` - Save configuration
-- `copy running-config startup-config` - Save configuration
-- `erase startup-config` - Erase startup configuration
-- `reload` - Reload the system
+- `disable`, `configure terminal`, `show version`, `show running-config`, `show startup-config`
+- `show ip interface brief`, `show interfaces [name]`, `show ip route`, `show arp`, `show mac address-table`
+- `ping <ip>`, `write memory`, `copy running-config startup-config`, `erase startup-config`, `reload`
 
 ### Global Configuration Mode (config)#
-- `hostname <name>` - Set device hostname
-- `interface <name>` - Enter interface configuration mode
-- `ip route <network> <mask> <nextHop>` - Add static route
-- `no ip route <network> <mask>` - Remove static route
-- `end` - Exit to privileged EXEC mode
-- `exit` - Exit to previous mode
+- `hostname <name>`, `interface <name>`, `ip route <network> <mask> <nextHop>`, `no ip route ...`
+- `end`, `exit`
 
 ### Interface Configuration Mode (config-if)#
-- `ip address <ip> <mask>` - Assign IP address
-- `no ip address` - Remove IP address
-- `shutdown` - Administratively shutdown interface
-- `no shutdown` - Enable interface
-- `description <text>` - Set interface description
-- `no description` - Remove interface description
-- `exit` - Exit to global configuration mode
+- `ip address <ip> <mask>`, `no ip address`
+- `shutdown`, `no shutdown`, `description <text>`, `no description`, `exit`
 
-## Quick Start
+## 🚀 Quick Start
 
 ### Prerequisites
-- Docker Desktop installed OR Node.js 18+ installed
-- Git (optional, for cloning)
+- Docker Desktop OR Node.js 18+
 
 ### Using Docker (Recommended)
 
 ```bash
-# Build and run with Docker Compose
 docker-compose up -d
-
-# Access the application
 open http://localhost:3000
 ```
 
-### Development Mode with Docker
+### Local Development
 
 ```bash
-# Run in development mode with hot reload
-docker-compose --profile dev up -d
-
-# Access the application
-open http://localhost:3000
-```
-
-### Local Development (Without Docker)
-
-```bash
-# Install dependencies
 npm install
-
-# Run development server
 npm run dev
-
-# Access the application
 open http://localhost:3000
 ```
 
-### Building for Production
+### Production Build
 
 ```bash
-# Install dependencies
 npm install
-
-# Build the application
 npm run build
-
-# Start production server
 npm start
 ```
 
-## Project Structure
+## 🏗️ Architecture
 
-```
-cisco-simulator/
-├── docker-compose.yml          # Docker Compose configuration
-├── Dockerfile                  # Production Docker image
-├── Dockerfile.dev              # Development Docker image
-├── package.json                # Node.js dependencies
-├── next.config.js              # Next.js configuration
-├── tsconfig.json               # TypeScript configuration
-├── jest.config.js              # Jest test configuration
-├── public/
-│   └── simulation.worker.js    # Web Worker for simulation
-├── src/
-│   ├── app/
-│   │   ├── layout.tsx          # Root layout
-│   │   └── page.tsx            # Main page
-│   ├── components/
-│   │   ├── NetworkCanvas.tsx   # Konva.js canvas component
-│   │   ├── Terminal.tsx        # xterm.js CLI terminal
-│   │   ├── Toolbar.tsx         # Device creation toolbar
-│   │   └── PropertiesPanel.tsx # Device properties panel
-│   ├── lib/
-│   │   ├── types/
-│   │   │   └── index.ts        # TypeScript type definitions
-│   │   ├── topology/
-│   │   │   └── topologyEngine.ts  # Topology management
-│   │   ├── simulation/
-│   │   │   └── simulationEngine.ts # Packet processing
-│   │   └── cli/
-│   │       ├── parser.ts       # CLI parser
-│   │       └── executor.ts     # CLI command executor
-│   ├── stores/
-│   │   └── simulationStore.ts  # Zustand state management
-│   ├── pages/
-│   │   └── api/
-│   │       └── health.ts       # Health check API
-│   └── tests/
-│       ├── topology.test.ts    # Topology tests
-│       ├── simulation.test.ts  # Simulation tests
-│       └── cli.test.ts         # CLI tests
-```
+Same hub-and-spoke design as a typical real-time simulator: React UI layer talks to a Zustand store, which posts messages to a Web Worker that runs the topology + simulation + CLI engines off the main thread (so the canvas stays smooth).
 
-## Architecture
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                        Next.js Frontend                      │
-│  ┌──────────────┐  ┌──────────────┐  ┌─────────────────┐   │
-│  │   Toolbar    │  │    Canvas    │  │ Properties Panel│   │
-│  │   (React)    │  │   (Konva.js) │  │    (React)      │   │
-│  └──────────────┘  └──────────────┘  └─────────────────┘   │
-├─────────────────────────────────────────────────────────────┤
-│                      Zustand Store                           │
-│              (State Management & Worker Comms)              │
-├─────────────────────────────────────────────────────────────┤
-│                    Web Worker Thread                         │
-│  ┌──────────────┐  ┌──────────────┐  ┌─────────────────┐   │
-│  │   Topology   │  │  Simulation  │  │  CLI Parser/    │   │
-│  │    Engine    │  │    Engine    │  │   Executor      │   │
-│  └──────────────┘  └──────────────┘  └─────────────────┘   │
-└─────────────────────────────────────────────────────────────┘
-```
-
-## Testing
+## 🧪 Testing
 
 ```bash
-# Run tests
 npm test
-
-# Run tests in watch mode
 npm run test:watch
 ```
 
-## API Endpoints
+## 🤝 Contributing
 
-- `GET /api/health` - Health check endpoint
+PRs welcome — for major changes please open an issue first.
 
-## Environment Variables
+## 📜 License
 
-- `NODE_ENV` - Environment mode (development/production)
-- `PORT` - Server port (default: 3000)
-- `NEXT_TELEMETRY_DISABLED` - Disable Next.js telemetry (default: 1)
+MIT
 
-## Troubleshooting
+## 🙏 Built With
 
-### Build Issues
-If the build times out or fails, try:
-```bash
-# Clear Next.js cache
-rm -rf .next
+[Next.js](https://nextjs.org/) · [Konva.js](https://konvajs.org/) · [Zustand](https://zustand-demo.pmnd.rs/) · [xterm.js](https://xtermjs.org/) · [TypeScript](https://www.typescriptlang.org/)
 
-# Kill all Node processes and retry
-taskkill /F /IM node.exe  # Windows
-pkill -f node             # macOS/Linux
-```
+---
 
-### Docker Issues
-If Docker fails to start, ensure:
-- Docker Desktop is running
-- Ports 3000 are not in use by other applications
+<div align="center">
 
-### Windows-Specific Issues
-If you encounter path issues on Windows, use WSL2 or PowerShell.
+### 🏛️ Want to learn networking the right way?
 
-## License
+**[Networkers Home](https://www.networkershome.com/)** — Bengaluru's leading Cisco + cybersecurity training institute since 2005.
+20,000+ alumni placed · 800+ hiring partners · 100% placement guarantee.
 
-MIT License - See LICENSE file for details.
+[**Free demo class**](https://www.networkershome.com/networkers-home-demo-class/) · [**Placement record**](https://www.networkershome.com/networkers-home-placement-record-2026/) · [**Talk to a counsellor**](https://www.networkershome.com/career-counselling/)
 
-## Credits
-
-Built with:
-- Next.js
-- React
-- Konva.js
-- Zustand
-- xterm.js
-- TypeScript
+</div>
